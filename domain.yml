@@ -1,0 +1,70 @@
+%YAML 1.1
+---
+intents:
+- affirm
+- deny
+- thanks
+- goodbye
+- greet
+- position
+- greet+position
+- status
+- name
+- greet+name+status
+
+entities:
+- role_type
+- PERSON
+
+slots:
+  PERSON:
+    type: text
+  positions:
+    type: list
+  role_type:
+    type: categorical
+    values:
+    - technical
+    - business
+    - any
+  status:
+    type: text
+
+templates:
+  utter_greet:
+  - text: Hello! How can I help?
+  - text: Hey! What can I do for you?
+  - text: hi, I’m Rasa’s recruiting bot. How can I help?
+  utter_simple_greet:
+  - text: Hello!
+  - text: Hey!
+  - text: hi, I’m Rasa’s recruiting bot.
+  utter_utilities:
+  - text: What is it that I can help you with? Open position or check you application status
+  utter_role:
+  - text: Are you looking for a technical or a business role?
+  utter_name:
+  - text: Enter your name
+  - text: May I know your name
+  - text: What's your name?
+  utter_check:
+  - text: Hi {PERSON}! Let me check that for you
+  utter_knowmore:
+  - text: Do you want more help?
+  utter_nothanks:
+  - text: Happy to have helped you!
+  utter_goodbye:
+  - text: Talk to you later.
+
+actions:
+- utter_greet
+- utter_simple_greet
+- utter_utilities
+- utter_role
+- utter_name
+- utter_check
+- utter_knowmore
+- utter_nothanks
+- utter_goodbye
+- action_check_status
+- action_check_positions
